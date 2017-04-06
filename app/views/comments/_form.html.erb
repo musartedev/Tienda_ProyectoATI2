@@ -1,0 +1,24 @@
+    <%= form_for([@user, @user.comments.build]) do |f| %>
+      <% if @user.comments.build.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.comments.build.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+          <% @user.comments.build.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= f.hidden_field :whocomment, :value => current_user.username %>
+      <%= f.hidden_field :title, :value => @user.username %>
+
+      <div class="field form-group">
+        <%= f.text_area :text, class: 'form-control', :placeholder => 'Type your comment here' %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Send comment", class: "btn btn-default" %>
+      </div>
+    <% end %>
