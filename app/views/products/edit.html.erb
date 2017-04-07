@@ -2,5 +2,10 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<div class="row">
+	<div class="col-lg-4 col-md-6 col-sm-8 col-xs-12 col-lg-offset-4 col-md-offset-3 col-sm-offset-2">
+<%= link_to 'Product Detail', @product %> |
+<%= link_to '< Back', products_path %>
+	</div>
+</div>
+

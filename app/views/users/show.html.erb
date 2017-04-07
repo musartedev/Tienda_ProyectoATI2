@@ -1,14 +1,25 @@
-<%= current_user.email %>
+<h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= @user.username%> </h2>
+<div class="panel panel-success"> 
+	<div class="panel-heading">About</div> 
+ 	  <div class="panel-body">
+	    	<ul class="list-group">
+			  <li class="list-group-item"><strong>Name: </strong><%= @user.name %> <%= @user.last_name %></li>
+			  <li class="list-group-item"><strong>Email: </strong><%= @user.email %> </li>
+			 </ul>
+	  </div>
+</div>
 <div class="row">
 	<div class="col-xs-12 col-lg-4 col-md-4 col-sm-6">
-		<h2> Add a comment :)</h2>
+		<h4> Add a comment :)</h4>
 		<%= render 'comments/form' %>
 	</div>
 </div>
 <div class="row">
 	<div class="col-lg-6">
-		<h1>RECENT COMMENTS</h1>
-		<% @user.comments.order("created_at DESC").each do |comment| %>
+		<h4>RECENT COMMENTS</h4>
+		<% all_comments = @user.comments.order("created_at DESC") %>
+		<% if all_comments.count > 0 %>
+		<% all_comments.each do |comment| %>
 			<div class="panel panel-default">
 			  <div class="panel-heading">
 			  <% if comment.whocomment == "Anonnymus" %>
@@ -28,6 +39,9 @@
 			    <%= comment.text %>
 			  </div>
 			</div>
+		<% end %>
+		<% else %>
+			<p>There's no comments yet. Be the first one!</p>
 		<% end %>
 	</div>
 </div>

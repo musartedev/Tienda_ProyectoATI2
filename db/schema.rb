@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20170406160618) do
     t.string   "email",               limit: 255, default: "", null: false
     t.string   "encrypted_password",  limit: 255, default: "", null: false
     t.string   "username",            limit: 255, default: "", null: false
+    t.string   "name",                limit: 255,              null: false
+    t.string   "last_name",           limit: 255,              null: false
     t.datetime "remember_created_at"
     t.datetime "created_at"
     t.datetime "updated_at"
