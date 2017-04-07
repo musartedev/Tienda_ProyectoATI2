@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'users' => 'users#index'
+  get 'profile/:username' => 'users#show', as: :user_profile
   devise_for :users
   resources :products
   root 'products#index'
